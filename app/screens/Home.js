@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 
+import { Header } from '../components/Header';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
 import { InputWithButton } from '../components/TextInput';
@@ -34,6 +35,7 @@ class Home extends Component {
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
+        <Header />
         <Logo />
         <InputWithButton
           buttonText={TEMP_BASE_CURRENCY}
