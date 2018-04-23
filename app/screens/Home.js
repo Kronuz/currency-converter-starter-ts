@@ -23,6 +23,7 @@ class Home extends Component {
   handlePressQuoteCurrency = () => {
     console.log('press quote');
   };
+
   handleTextChange = text => {
     console.log('change text', text);
   };
@@ -31,11 +32,15 @@ class Home extends Component {
     console.log('press swap currency');
   };
 
+  handleOptionPress = () => {
+    console.log('press option');
+  };
+
   render() {
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
-        <Header />
+        <Header onPress={this.handleOptionPress} />
         <Logo />
         <InputWithButton
           buttonText={TEMP_BASE_CURRENCY}
