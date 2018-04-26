@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Keyboard, Animated } from 'react-native';
+import { View, Text, Keyboard, Animated, Platform } from 'react-native';
 
 import styles from './styles';
 import imageLogo from './images/logo.png';
@@ -13,12 +13,16 @@ class Logo extends Component {
     this.imageWidth = new Animated.Value(styles.$largeImageSize);
   }
   componentDidMount() {
+    const showListener =
+      Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';
+    const hideListener =
+      Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide';
     this.keyboardShowListener = Keyboard.addListener(
-      'keyboardWillShow',
+      showListener,
       this.keyboardShow,
     );
     this.keyboardHideListener = Keyboard.addListener(
-      'keyboardWillHide',
+      hideListener,
       this.keyboardHide,
     );
   }
