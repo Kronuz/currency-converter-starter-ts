@@ -9,6 +9,8 @@ import { InputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 
+import { swapCurrency, changeCurrencyAmount } from '../actions/currencies';
+
 const TEMP_BASE_CURRENCY = 'USD';
 const TEMP_QUOTE_CURRENCY = 'GBP';
 const TEMP_BASE_PRICE = '100';
@@ -27,12 +29,14 @@ class Home extends Component {
     this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency' });
   };
 
-  handleTextChange = text => {
-    console.log('change text', text);
+  handleTextChange = amount => {
+    // this.props.dispatch(changeCurrencyAmount(amount));
+    console.log(changeCurrencyAmount(amount));
   };
 
   handleSwapCurrency = () => {
-    console.log('press swap currency');
+    // this.props.dispatch(swapCurrency());
+    console.log(swapCurrency());
   };
 
   handleOptionPress = () => {
