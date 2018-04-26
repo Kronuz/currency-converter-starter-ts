@@ -15,5 +15,5 @@ EStyleSheet.build({
 
 // export default () => <Home />;
 
-import CurrencyList from './screens/CurrencyList';
-export default () => <CurrencyList />;
+import Options from './screens/Options';
+export default () => <Options />;

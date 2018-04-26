@@ -14,7 +14,11 @@ const Icon = ({ checkmark, visible }) => {
   return (
     <View style={iconStyles}>
       {checkmark ? (
-        <Image resizeMode='contain' style={styles.checkIcon} source={imageCheck} />
+        <Image
+          resizeMode="contain"
+          style={styles.checkIcon}
+          source={imageCheck}
+        />
       ) : null}
     </View>
   );
