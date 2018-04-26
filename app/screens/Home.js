@@ -15,13 +15,17 @@ import { swapCurrency, changeCurrencyAmount } from '../actions/currencies';
 
 class Home extends Component {
   handlePressBaseCurrency = () => {
-    console.log('press base');
-    this.props.navigation.navigate('CurrencyList', { title: 'Base Currency' });
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Base Currency',
+      type: 'base',
+    });
   };
 
   handlePressQuoteCurrency = () => {
-    console.log('press quote');
-    this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency' });
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Quote Currency',
+      type: 'quote',
+    });
   };
 
   handleTextChange = amount => {
