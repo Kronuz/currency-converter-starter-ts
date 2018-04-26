@@ -6,7 +6,7 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import styles from './styles';
 
 const ListItem = ({ text, onPress, selected }) => (
-  <TouchableHighlight onPress={onPress}>
+  <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
     <View style={styles.row}>
       <Text style={styles.text}>{text}</Text>
       {selected ? <Text>Selected</Text> : null}
