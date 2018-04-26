@@ -34,18 +34,18 @@ class Themes extends Component {
         <Separator />
         <ListItem
           text="Orange"
-          onPress={() => this.handlePressTheme(styles.$green)}
-          selected
-          checkmark={false}
-          iconBackground={styles.$green}
-        />
-        <Separator />
-        <ListItem
-          text="Green"
           onPress={() => this.handlePressTheme(styles.$orange)}
           selected
           checkmark={false}
           iconBackground={styles.$orange}
+        />
+        <Separator />
+        <ListItem
+          text="Green"
+          onPress={() => this.handlePressTheme(styles.$green)}
+          selected
+          checkmark={false}
+          iconBackground={styles.$green}
         />
         <Separator />
         <ListItem
