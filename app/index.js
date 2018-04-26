@@ -5,6 +5,10 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 EStyleSheet.build({
   $primaryBlue: '#4f6d7a',
+  $primaryOrange: '#d57855',
+  $primaryGreen: '#00bd9d',
+  $primaryPurple: '#9e768f',
+
   $white: '#fff',
   $border: '#e2e2e2',
   $inputText: '#797979',
@@ -15,5 +19,5 @@ EStyleSheet.build({
 
 // export default () => <Home />;
 
-import Options from './screens/Options';
-export default () => <Options />;
+import Themes from './screens/Themes';
+export default () => <Themes />;
