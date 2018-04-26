@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StatusBar, KeyboardAvoidingView } from 'react-native';
 
+import { connect } from 'react-redux';
+
 import { Header } from '../components/Header';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
@@ -30,13 +32,11 @@ class Home extends Component {
   };
 
   handleTextChange = amount => {
-    // this.props.dispatch(changeCurrencyAmount(amount));
-    console.log(changeCurrencyAmount(amount));
+    this.props.dispatch(changeCurrencyAmount(amount));
   };
 
   handleSwapCurrency = () => {
-    // this.props.dispatch(swapCurrency());
-    console.log(swapCurrency());
+    this.props.dispatch(swapCurrency());
   };
 
   handleOptionPress = () => {
@@ -83,4 +83,4 @@ Home.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default Home;
+export default connect()(Home);
