@@ -1,11 +1,11 @@
+import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Linking, Platform, ScrollView, StatusBar } from 'react-native';
 
-import { ListItem, Separator } from '../components/List';
 import { connectAlert } from '../components/Alert';
+import { ListItem, Separator } from '../components/List';
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';

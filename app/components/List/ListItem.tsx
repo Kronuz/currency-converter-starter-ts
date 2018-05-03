@@ -1,10 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Text, TouchableHighlight, View } from 'react-native';
 
-import { View, Text, TouchableHighlight } from 'react-native';
-
-import styles from './styles';
 import Icon from './Icon';
+import styles from './styles';
 
 const ListItem = ({
   text,

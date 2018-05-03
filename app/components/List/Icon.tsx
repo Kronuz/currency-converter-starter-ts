@@ -1,10 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Image, View } from 'react-native';
 
-import { View, Image } from 'react-native';
-
-import styles from './styles';
 import imageCheck from './images/check.png';
+import styles from './styles';
 
 const Icon = ({ checkmark, visible, iconBackground }) => {
   const iconStyles = [styles.icon];

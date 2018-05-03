@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, TouchableHighlight, TextInput } from 'react-native';
-
 import color from 'color';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Text, TextInput, TouchableHighlight, View } from 'react-native';
 
 import styles from './styles';
 

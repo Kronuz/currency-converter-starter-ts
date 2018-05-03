@@ -1,12 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { ScrollView, StatusBar } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { connect } from 'react-redux';
 
+import { changePrimaryColor } from '../actions/theme';
 import { ListItem, Separator } from '../components/List';
-import { changePrimaryColor } from '../actions/theme'
 
 const styles = EStyleSheet.create({
   $blue: '$primaryBlue',

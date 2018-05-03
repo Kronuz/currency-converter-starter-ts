@@ -1,12 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FlatList, View, StatusBar } from 'react-native';
+import { FlatList, StatusBar, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
 import { ListItem, Separator } from '../components/List';
 import currencies from '../data/currencies';
-import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
 
 class CurrencyList extends Component {
   handlePress = currency => {

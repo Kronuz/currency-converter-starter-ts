@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React from 'react';
+import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 
 import styles from './styles';
 

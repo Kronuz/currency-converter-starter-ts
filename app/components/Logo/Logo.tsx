@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
-import { View, Text, Keyboard, Animated, Platform } from 'react-native';
-
-import styles from './styles';
+import { Animated, Keyboard, Platform, Text, View } from 'react-native';
 import imageLogo from './images/logo.png';
+import styles from './styles';
+
 
 const ANIMATION_DURATION = 250;
 

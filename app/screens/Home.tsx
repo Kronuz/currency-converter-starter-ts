@@ -1,23 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StatusBar, KeyboardAvoidingView } from 'react-native';
-
+import { KeyboardAvoidingView, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Header } from '../components/Header';
-import { Container } from '../components/Container';
-import { Logo } from '../components/Logo';
-import { InputWithButton } from '../components/TextInput';
-import { ClearButton } from '../components/Button';
-import { LastConverted } from '../components/Text';
+import { changeCurrencyAmount, getInitialConversion, swapCurrency } from '../actions/currencies';
 import { connectAlert } from '../components/Alert';
+import { ClearButton } from '../components/Button';
+import { Container } from '../components/Container';
+import { Header } from '../components/Header';
+import { Logo } from '../components/Logo';
+import { LastConverted } from '../components/Text';
+import { InputWithButton } from '../components/TextInput';
 
-import {
-  swapCurrency,
-  changeCurrencyAmount,
-  getInitialConversion,
-} from '../actions/currencies';
 
 class Home extends Component {
   componentWillMount() {
