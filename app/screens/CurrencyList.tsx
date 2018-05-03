@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, View, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
