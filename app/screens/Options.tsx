@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
 import { Linking, Platform, ScrollView, StatusBar } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { connectAlert } from '../components/Alert';
 import { ListItem, Separator } from '../components/List';
@@ -11,18 +11,24 @@ const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
 
-class Options extends Component {
-  handleThemesPress = () => {
+interface IProps {
+  navigation: NavigationScreenProp<any>;
+  alertWithType(type: string, title: string, message: string): void;
+  name: string;
+}
+
+class Options extends Component<IProps> {
+  private handleThemesPress = () => {
     this.props.navigation.navigate('Themes');
   };
 
-  handleSitePress = () => {
+  private handleSitePress = () => {
     Linking.openURL('http://fixer.io').catch(() =>
       this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened"),
     );
   };
 
-  render() {
+  public render() {
     return (
       <ScrollView>
         <StatusBar translucent={false} barStyle="default" />
@@ -54,10 +60,5 @@ class Options extends Component {
     );
   }
 }
-
-Options.propTypes = {
-  navigation: PropTypes.object,
-  alertWithType: PropTypes.func,
-};
 
 export default connectAlert(Options);

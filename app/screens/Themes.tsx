@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Component } from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { changePrimaryColor } from '../actions/theme';
 import { ListItem, Separator } from '../components/List';
@@ -15,13 +15,18 @@ const styles = EStyleSheet.create({
   $purple: '$primaryPurple',
 });
 
-class Themes extends Component {
-  handlePressTheme = (color) => {
+interface IProps {
+  dispatch: Dispatch<any>;
+  navigation: NavigationScreenProp<any>;
+}
+
+class Themes extends Component<IProps> {
+  private handlePressTheme = (color: string) => {
     this.props.dispatch(changePrimaryColor(color));
     this.props.navigation.goBack(null);
   };
 
-  render() {
+  public render() {
     return (
       <ScrollView>
         <StatusBar translucent={false} barStyle="default" />
@@ -61,9 +66,5 @@ class Themes extends Component {
     );
   }
 }
-
-Themes.propTypes = {
-  navigation: PropTypes.object,
-};
 
 export default connect()(Themes);
