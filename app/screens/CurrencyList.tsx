@@ -1,14 +1,21 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Component } from 'react';
+import * as React from 'react';
 import { FlatList, StatusBar, View } from 'react-native';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
 import { ListItem, Separator } from '../components/List';
 import currencies from '../data/currencies';
 
-class CurrencyList extends Component {
+interface CurrencyListProps {
+  dispatch: Dispatch<any>;
+  navigation: NavigationScreenProp<any>;
+  baseCurrency: string;
+  quoteCurrency: string;
+  primaryColor: string;
+}
+
+class CurrencyList extends React.Component<CurrencyListProps> {
   handlePress = currency => {
     const { type } = this.props.navigation.state.params;
     if (type === 'base') {
@@ -44,13 +51,6 @@ class CurrencyList extends Component {
     );
   }
 }
-
-CurrencyList.propTypes = {
-  navigation: PropTypes.object,
-  baseCurrency: PropTypes.string,
-  quoteCurrency: PropTypes.string,
-  primaryColor: PropTypes.string,
-};
 
 const mapStateToProps = state => ({
   baseCurrency: state.currencies.baseCurrency,

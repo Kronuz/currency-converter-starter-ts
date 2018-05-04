@@ -1,14 +1,17 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Component } from 'react';
+import * as React from 'react';
 import { View } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 
-class AlertProvider extends Component {
-  getChildContext() {
+import AlertsContext from './context';
+
+class AlertProvider extends React.Component {
+  dropdown: AlertsContext;
+
+  // childContextTypes:
+  getChildContext(): AlertsContext {
     return {
-      alert: (...args) => this.dropdown.alert(...args),
-      alertWithType: (...args) => this.dropdown.alertWithType(...args),
+      alert: (...messages: string[]) => this.dropdown.alert(...messages),
+      alertWithType: (type: string, title: string,...messages: string[]) => this.dropdown.alertWithType(type, title, ...messages),
     };
   }
 
@@ -17,7 +20,7 @@ class AlertProvider extends Component {
       <View style={{ flex: 1 }}>
         {React.Children.only(this.props.children)}
         <DropdownAlert
-          ref={ref => {
+          ref={(ref: AlertsContext) => {
             this.dropdown = ref;
           }}
         />
@@ -25,14 +28,5 @@ class AlertProvider extends Component {
     );
   }
 }
-
-AlertProvider.childContextTypes = {
-  alertWithType: PropTypes.func,
-  alert: PropTypes.func,
-};
-
-AlertProvider.propTypes = {
-  children: PropTypes.any,
-};
 
 export default AlertProvider;

@@ -1,22 +1,16 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import * as React from 'react';
+import { Image, Text, TouchableOpacity, View, ButtonProps } from 'react-native';
 
 import imageIcon from './images/icon.png';
 import styles from './styles';
 
-const ClearButton = ({ text, onPress }) => (
+const ClearButton = ({title, onPress}: ButtonProps) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.wrapper}>
       <Image resizeMode="contain" style={styles.icon} source={imageIcon} />
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   </TouchableOpacity>
 );
-
-ClearButton.propTypes = {
-  text: PropTypes.string,
-  onPress: PropTypes.func,
-};
 
 export default ClearButton;

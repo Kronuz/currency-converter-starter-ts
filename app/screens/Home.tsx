@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Component } from 'react';
+import * as React from 'react';
 import { KeyboardAvoidingView, StatusBar } from 'react-native';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { changeCurrencyAmount, getInitialConversion, swapCurrency } from '../actions/currencies';
 import { connectAlert } from '../components/Alert';
@@ -13,13 +12,26 @@ import { Logo } from '../components/Logo';
 import { LastConverted } from '../components/Text';
 import { InputWithButton } from '../components/TextInput';
 
+interface HomeProps {
+  dispatch: Dispatch<any>;
+  navigation: NavigationScreenProp<any>;
 
-class Home extends Component {
+  baseCurrency: string;
+  quoteCurrency: string;
+  amount: number;
+  conversionRate: number;
+  isFetching: boolean;
+  lastConvertedDate: Date;
+  primaryColor: string;
+  currencyError: string;
+}
+
+class Home extends React.Component<HomeProps> {
   componentWillMount() {
     this.props.dispatch(getInitialConversion());
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: HomeProps) {
     if (
       nextProps.currencyError &&
       this.props.currencyError !== nextProps.currencyError
@@ -87,7 +99,7 @@ class Home extends Component {
             conversionRate={this.props.conversionRate}
           />
           <ClearButton
-            text="Reverse Currencies"
+            title="Reverse Currencies"
             onPress={this.handleSwapCurrency}
           />
         </KeyboardAvoidingView>
@@ -95,18 +107,6 @@ class Home extends Component {
     );
   }
 }
-
-Home.propTypes = {
-  navigation: PropTypes.object,
-  baseCurrency: PropTypes.string,
-  quoteCurrency: PropTypes.string,
-  amount: PropTypes.number,
-  conversionRate: PropTypes.number,
-  isFetching: PropTypes.bool,
-  lastConvertedDate: PropTypes.object,
-  primaryColor: PropTypes.string,
-  currencyError: PropTypes.string,
-};
 
 const mapStateToProps = state => {
   const baseCurrency = state.currencies.baseCurrency;

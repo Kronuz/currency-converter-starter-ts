@@ -1,5 +1,5 @@
 import { StatusBar } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationScreenDetails } from 'react-navigation';
 
 import CurrencyList from '../screens/CurrencyList';
 import Home from '../screens/Home';
@@ -35,8 +35,8 @@ const HomeStack = StackNavigator(
 const CurrencyListStack = StackNavigator({
   CurrencyList: {
     screen: CurrencyList,
-    navigationOptions: ({ navigation }) => ({
-      headerTitle: navigation.state.params.title,
+    navigationOptions: ({ navigation }: NavigationScreenDetails<any>) => ({
+      headerTitle: navigation.state.params ? navigation.state.params.title : "Untitled",
     }),
   },
 });

@@ -1,6 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { Component } from 'react';
+import * as React from 'react';
 import { Linking, Platform, ScrollView, StatusBar } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
@@ -11,13 +10,13 @@ const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
 
-interface IProps {
+interface OptionsProps {
   navigation: NavigationScreenProp<any>;
   alertWithType(type: string, title: string, message: string): void;
   name: string;
 }
 
-class Options extends Component<IProps> {
+class Options extends React.Component<OptionsProps> {
   private handleThemesPress = () => {
     this.props.navigation.navigate('Themes');
   };

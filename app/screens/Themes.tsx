@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react';
+import * as React from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { connect, Dispatch } from 'react-redux';
@@ -15,12 +14,12 @@ const styles = EStyleSheet.create({
   $purple: '$primaryPurple',
 });
 
-interface IProps {
+interface ThemesProps {
   dispatch: Dispatch<any>;
   navigation: NavigationScreenProp<any>;
 }
 
-class Themes extends Component<IProps> {
+class Themes extends React.Component<ThemesProps> {
   private handlePressTheme = (color: string) => {
     this.props.dispatch(changePrimaryColor(color));
     this.props.navigation.goBack(null);

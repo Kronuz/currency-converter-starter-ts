@@ -1,18 +1,21 @@
-import React from 'react';
-import { Component } from 'react';
-import { Animated, Keyboard, Platform, Text, View } from 'react-native';
+import * as React from 'react';
+import { Animated, Keyboard, Platform, Text, View, EmitterSubscription } from 'react-native';
 import imageLogo from './images/logo.png';
 import styles from './styles';
 
-
 const ANIMATION_DURATION = 250;
 
-class Logo extends Component {
-  constructor(props) {
+class Logo extends React.Component {
+  imageWidth: Animated.Value;
+  keyboardShowListener?: EmitterSubscription;
+  keyboardHideListener?: EmitterSubscription;
+
+  constructor(props: any) {
     super(props);
 
     this.imageWidth = new Animated.Value(styles.$largeImageSize);
   }
+
   componentDidMount() {
     const showListener =
       Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';

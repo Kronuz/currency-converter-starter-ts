@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 
 import styles from './styles';
 
-const Container = ({ children, backgroundColor }) => {
+interface ContainerProps {
+  children: any;
+  backgroundColor: string;
+}
+
+const Container = ({ children, backgroundColor }: ContainerProps) => {
   const containerStyles = [styles.container];
   if (backgroundColor) {
     containerStyles.push({ backgroundColor });
@@ -14,11 +18,6 @@ const Container = ({ children, backgroundColor }) => {
       <View style={containerStyles}>{children}</View>
     </TouchableWithoutFeedback>
   );
-};
-
-Container.propTypes = {
-  children: PropTypes.any,
-  backgroundColor: PropTypes.string,
 };
 
 export default Container;

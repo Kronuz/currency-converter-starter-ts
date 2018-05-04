@@ -1,19 +1,28 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import { Text, TouchableHighlight, View } from 'react-native';
 
 import Icon from './Icon';
 import styles from './styles';
 
+interface ListItemProps {
+  text: string;
+  onPress: () => any;
+  selected: boolean;
+  checkmark: boolean;
+  visible: boolean;
+  customIcon?: React.ReactElement<any>;
+  iconBackground?: string;
+}
+
 const ListItem = ({
   text,
   onPress,
+  customIcon,
+  iconBackground,
   selected = false,
   checkmark = true,
   visible = true,
-  customIcon = null,
-  iconBackground = null,
-}) => (
+}: ListItemProps) => (
   <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
     <View style={styles.row}>
       <Text style={styles.text}>{text}</Text>
@@ -30,15 +39,5 @@ const ListItem = ({
     </View>
   </TouchableHighlight>
 );
-
-ListItem.propTypes = {
-  text: PropTypes.string,
-  onPress: PropTypes.func,
-  selected: PropTypes.bool,
-  checkmark: PropTypes.bool,
-  visible: PropTypes.bool,
-  customIcon: PropTypes.element,
-  iconBackground: PropTypes.string,
-};
 
 export default ListItem;
