@@ -3,16 +3,15 @@ import * as React from 'react';
 import { Linking, Platform, ScrollView, StatusBar } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { connectAlert } from '../components/Alert';
+import { connectAlert, AlertContext } from '../components/Alert';
 import { ListItem, Separator } from '../components/List';
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
 
-interface OptionsProps {
+interface OptionsProps extends AlertContext {
   navigation: NavigationScreenProp<any>;
-  alertWithType(type: string, title: string, message: string): void;
   name: string;
 }
 

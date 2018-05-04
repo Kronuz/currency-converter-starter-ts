@@ -1,4 +1,4 @@
-import AlertProvider from './AlertProvider';
+import { AlertProvider, AlertContext } from './AlertProvider';
 import connectAlert from './connectAlert';
 
-export { AlertProvider, connectAlert };
+export { AlertProvider, connectAlert, AlertContext };

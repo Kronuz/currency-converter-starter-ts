@@ -1,17 +1,26 @@
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import * as React from 'react';
 
-import AlertsContext from './context';
+import { Alert, AlertContext } from './AlertProvider';
 
-const connectAlert = WrappedComponent => {
-  const ConnectedAlert = (props, context: AlertsContext) => (
-    <WrappedComponent
-      {...props}
-      alert={context.alert}
-      alertWithType={context.alertWithType}
-    />
-  );
-  return hoistNonReactStatic(ConnectedAlert, WrappedComponent);
+const connectAlert = <P extends AlertContext>(
+  UnwrappedComponent: React.ComponentType<P>
+) => {
+  class ConnectedAlert extends React.Component<P> {
+    render() {
+      return (
+        <Alert.Consumer>
+        {
+          (context: AlertContext) => <UnwrappedComponent
+            {...this.props}
+            alertWithType={context.alertWithType}
+          />
+        }
+        </Alert.Consumer>
+      );
+    }
+  }
+  return hoistNonReactStatic(ConnectedAlert, UnwrappedComponent);
 };
 
 export default connectAlert;

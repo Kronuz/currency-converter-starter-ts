@@ -4,7 +4,7 @@ import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 
 import { changeCurrencyAmount, getInitialConversion, swapCurrency } from '../actions/currencies';
-import { connectAlert } from '../components/Alert';
+import { connectAlert, AlertContext } from '../components/Alert';
 import { ClearButton } from '../components/Button';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
@@ -12,7 +12,7 @@ import { Logo } from '../components/Logo';
 import { LastConverted } from '../components/Text';
 import { InputWithButton } from '../components/TextInput';
 
-interface HomeProps {
+interface HomeProps extends AlertContext {
   dispatch: Dispatch<any>;
   navigation: NavigationScreenProp<any>;
 

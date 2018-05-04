@@ -2,25 +2,28 @@ import * as React from 'react';
 import { View } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 
-import AlertsContext from './context';
+export interface AlertContext {
+  alertWithType(type: string, title: string, ...messages: string[]): void;
+}
+const defaultAlertContext: AlertContext = {
+  alertWithType: () => {},
+}
+export const Alert = React.createContext<AlertContext>(defaultAlertContext);
 
-class AlertProvider extends React.Component {
-  dropdown: AlertsContext;
-
-  // childContextTypes:
-  getChildContext(): AlertsContext {
-    return {
-      alert: (...messages: string[]) => this.dropdown.alert(...messages),
-      alertWithType: (type: string, title: string,...messages: string[]) => this.dropdown.alertWithType(type, title, ...messages),
-    };
-  }
+export class AlertProvider extends React.Component {
+  dropdown: AlertContext = defaultAlertContext;
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        {React.Children.only(this.props.children)}
+        <Alert.Provider value={ {
+          alertWithType: (type: string, title: string,...messages: string[]) => this.dropdown.alertWithType(type, title, ...messages)
+        } }>
+          {React.Children.only(this.props.children)}
+        </Alert.Provider>
+
         <DropdownAlert
-          ref={(ref: AlertsContext) => {
+          ref={(ref: AlertContext) => {
             this.dropdown = ref;
           }}
         />
@@ -28,5 +31,3 @@ class AlertProvider extends React.Component {
     );
   }
 }
-
-export default AlertProvider;
