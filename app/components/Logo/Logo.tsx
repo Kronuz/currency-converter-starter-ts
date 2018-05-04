@@ -5,10 +5,14 @@ import styles from './styles';
 
 const ANIMATION_DURATION = 250;
 
+class NullEmitterSubscription {
+  remove() {};
+}
+
 class Logo extends React.Component {
   imageWidth: Animated.Value;
-  keyboardShowListener?: EmitterSubscription;
-  keyboardHideListener?: EmitterSubscription;
+  keyboardShowListener: EmitterSubscription | NullEmitterSubscription = new NullEmitterSubscription;
+  keyboardHideListener: EmitterSubscription | NullEmitterSubscription = new NullEmitterSubscription;
 
   constructor(props: any) {
     super(props);
