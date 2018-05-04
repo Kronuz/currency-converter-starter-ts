@@ -7,11 +7,11 @@ import styles from './styles';
 interface ListItemProps {
   text: string;
   onPress: () => any;
-  selected: boolean;
-  checkmark: boolean;
-  visible: boolean;
   customIcon?: React.ReactElement<any>;
   iconBackground?: string;
+  selected?: boolean;
+  checkmark?: boolean;
+  visible?: boolean;
 }
 
 const ListItem = ({
