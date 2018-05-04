@@ -23,7 +23,7 @@ EStyleSheet.build({
 export default () => (
   <Provider store={store}>
     <AlertProvider>
-      <Navigator onNavigationStateChange={null} />
+      <Navigator />
     </AlertProvider>
   </Provider>
 );
