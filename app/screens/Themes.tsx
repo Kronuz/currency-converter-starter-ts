@@ -33,7 +33,7 @@ class Themes extends React.Component<ThemesProps> {
           text="Blue"
           onPress={() => this.handlePressTheme(styles.$blue)}
           selected
-          checkmark={false}
+          checkMark={false}
           iconBackground={styles.$blue}
         />
         <Separator />
@@ -41,7 +41,7 @@ class Themes extends React.Component<ThemesProps> {
           text="Orange"
           onPress={() => this.handlePressTheme(styles.$orange)}
           selected
-          checkmark={false}
+          checkMark={false}
           iconBackground={styles.$orange}
         />
         <Separator />
@@ -49,7 +49,7 @@ class Themes extends React.Component<ThemesProps> {
           text="Green"
           onPress={() => this.handlePressTheme(styles.$green)}
           selected
-          checkmark={false}
+          checkMark={false}
           iconBackground={styles.$green}
         />
         <Separator />
@@ -57,7 +57,7 @@ class Themes extends React.Component<ThemesProps> {
           text="Purple"
           onPress={() => this.handlePressTheme(styles.$purple)}
           selected
-          checkmark={false}
+          checkMark={false}
           iconBackground={styles.$purple}
         />
         <Separator />

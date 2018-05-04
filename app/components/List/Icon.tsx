@@ -5,12 +5,12 @@ import imageCheck from './images/check.png';
 import styles from './styles';
 
 interface IconProps {
-  checkmark?: boolean;
+  checkMark?: boolean;
   visible?: boolean;
   iconBackground?: string;
 }
 
-const Icon = ({ checkmark, visible, iconBackground }: IconProps) => {
+const Icon = ({ checkMark, visible, iconBackground }: IconProps) => {
   const iconStyles = [styles.icon];
   if (visible) {
     iconStyles.push(styles.iconVisible);
@@ -20,7 +20,7 @@ const Icon = ({ checkmark, visible, iconBackground }: IconProps) => {
   }
   return (
     <View style={iconStyles}>
-      {checkmark ? (
+      {checkMark ? (
         <Image
           resizeMode="contain"
           style={styles.checkIcon}

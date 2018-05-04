@@ -10,7 +10,7 @@ interface ListItemProps {
   customIcon?: React.ReactElement<any>;
   iconBackground?: string;
   selected?: boolean;
-  checkmark?: boolean;
+  checkMark?: boolean;
   visible?: boolean;
 }
 
@@ -20,7 +20,7 @@ const ListItem = ({
   customIcon,
   iconBackground,
   selected = false,
-  checkmark = true,
+  checkMark = true,
   visible = true,
 }: ListItemProps) => (
   <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
@@ -28,7 +28,7 @@ const ListItem = ({
       <Text style={styles.text}>{text}</Text>
       {selected ? (
         <Icon
-          checkmark={checkmark}
+          checkMark={checkMark}
           visible={visible}
           iconBackground={iconBackground}
         />
