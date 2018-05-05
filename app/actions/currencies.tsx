@@ -1,5 +1,4 @@
 import { createAction, ActionsUnion } from '.';
-import { create } from 'react-test-renderer';
 
 export enum ActionTypes {
   SWAP_CURRENCY = 'SWAP_CURRENCY',

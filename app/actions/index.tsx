@@ -7,7 +7,7 @@ export interface Action<T extends string> {
 }
 
 export interface AnyAction<T extends string, P> extends Action<T> {
-  [extraProps: string]: P;
+  payload: P,
 }
 
 export function createAction<T extends string>(type: T): Action<T>;
