@@ -11,13 +11,22 @@ export enum ActionTypes {
   CONVERSION_ERROR = 'CONVERSION_ERROR',
 };
 
+export interface Result {
+  base: string;
+  date: string;
+  rates: {
+    [currency: string]: number;
+  };
+  error?: string;
+}
+
 export const Actions = {
   swapCurrency: () => createAction(ActionTypes.SWAP_CURRENCY),
   changeCurrencyAmount: (amount: number) => createAction(ActionTypes.CHANGE_CURRENCY_AMOUNT, amount),
   changeBaseCurrency: (currency: string) => createAction(ActionTypes.CHANGE_BASE_CURRENCY, currency),
   changeQuoteCurrency: (currency: string) => createAction(ActionTypes.CHANGE_QUOTE_CURRENCY, currency),
   getInitialConversion: () => createAction(ActionTypes.GET_INITIAL_CONVERSION),
-  conversionResult: (result) => createAction(ActionTypes.CONVERSION_RESULT, result),
+  conversionResult: (result: Result) => createAction(ActionTypes.CONVERSION_RESULT, result),
   conversionError: (error: string) => createAction(ActionTypes.CONVERSION_ERROR, error),
 };
 

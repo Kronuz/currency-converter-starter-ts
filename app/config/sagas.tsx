@@ -1,5 +1,5 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
-import { Actions, ActionTypes } from '../actions/currencies';
+import { Actions, ActionTypes, Result } from '../actions/currencies';
 import { State } from '../reducers';
 
 // 1. Swap currency
@@ -22,7 +22,7 @@ function* fetchLatestConversionRates(action: Actions) {
         break;
     }
     const response = yield call(getLatestRate, currency);
-    const result = yield response.json();
+    const result: Result = yield response.json();
     if (result.error) {
       yield put(Actions.conversionError(result.error));
     } else {
