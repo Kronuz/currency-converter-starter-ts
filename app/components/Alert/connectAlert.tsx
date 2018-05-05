@@ -1,4 +1,4 @@
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import * as React from 'react';
 
 import { Alert, AlertContext } from './AlertProvider';
@@ -20,7 +20,7 @@ const connectAlert = <P extends AlertContext>(
       );
     }
   }
-  return hoistNonReactStatic(ConnectedAlert, UnwrappedComponent);
+  return hoistNonReactStatics(ConnectedAlert, UnwrappedComponent);
 };
 
 export default connectAlert;

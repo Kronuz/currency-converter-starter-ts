@@ -3,7 +3,8 @@ import { KeyboardAvoidingView, StatusBar } from 'react-native';
 import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { changeCurrencyAmount, getInitialConversion, swapCurrency } from '../actions/currencies';
+import { Actions } from '../actions/currencies';
+import { State } from '../reducers';
 import { connectAlert, AlertContext } from '../components/Alert';
 import { ClearButton } from '../components/Button';
 import { Container } from '../components/Container';
@@ -28,7 +29,7 @@ interface HomeProps extends AlertContext {
 
 class Home extends React.Component<HomeProps> {
   componentWillMount() {
-    this.props.dispatch(getInitialConversion());
+    this.props.dispatch(Actions.getInitialConversion());
   }
 
   componentWillReceiveProps(nextProps: HomeProps) {
@@ -54,12 +55,14 @@ class Home extends React.Component<HomeProps> {
     });
   };
 
-  handleTextChange = amount => {
-    this.props.dispatch(changeCurrencyAmount(amount));
+  handleTextChange = (amount: string) => {
+    this.props.dispatch(
+      Actions.changeCurrencyAmount(parseFloat(amount)),
+    );
   };
 
   handleSwapCurrency = () => {
-    this.props.dispatch(swapCurrency());
+    this.props.dispatch(Actions.swapCurrency());
   };
 
   handleOptionPress = () => {
@@ -108,7 +111,7 @@ class Home extends React.Component<HomeProps> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: State) => {
   const baseCurrency = state.currencies.baseCurrency;
   const quoteCurrency = state.currencies.quoteCurrency;
   const conversionSelector = state.currencies.conversions[baseCurrency] || {};

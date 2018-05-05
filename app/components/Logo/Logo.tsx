@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Animated, Keyboard, Platform, Text, View, EmitterSubscription } from 'react-native';
-import imageLogo from './images/logo.png';
+import logoPng from './images/logo.png';
 import styles from './styles';
 
 const ANIMATION_DURATION = 250;
@@ -61,7 +61,7 @@ class Logo extends React.Component {
           <Animated.Image
             resizeMode="contain"
             style={imageStyle}
-            source={imageLogo}
+            source={logoPng}
           />
         </View>
         <Text style={styles.text}>Currency Converter</Text>

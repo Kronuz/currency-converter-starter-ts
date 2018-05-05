@@ -1,19 +1,24 @@
-import { CHANGE_PRIMARY_COLOR } from '../actions/theme';
+import { Actions, ActionTypes } from '../actions/theme';
 
-const initialState = {
+export interface State {
+  primaryColor: string;
+}
+
+export const initialState: State = {
   primaryColor: '#4f6d7a',
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case CHANGE_PRIMARY_COLOR:
+    case ActionTypes.CHANGE_PRIMARY_COLOR: {
+      const {payload: color} = action;
       return {
         ...state,
-        primaryColor: action.color,
+        primaryColor: color,
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };
-
-export default reducer;

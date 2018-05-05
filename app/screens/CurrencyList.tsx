@@ -3,9 +3,10 @@ import { FlatList, StatusBar, View } from 'react-native';
 import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
+import { Actions } from '../actions/currencies';
 import { ListItem, Separator } from '../components/List';
 import currencies from '../data/currencies';
+import { State } from '../reducers';
 
 interface CurrencyListProps {
   dispatch: Dispatch<any>;
@@ -16,12 +17,12 @@ interface CurrencyListProps {
 }
 
 class CurrencyList extends React.Component<CurrencyListProps> {
-  handlePress = currency => {
+  handlePress = (currency: string) => {
     const { type } = this.props.navigation.state.params;
     if (type === 'base') {
-      this.props.dispatch(changeBaseCurrency(currency));
+      this.props.dispatch(Actions.changeBaseCurrency(currency));
     } else if (type === 'quote') {
-      this.props.dispatch(changeQuoteCurrency(currency));
+      this.props.dispatch(Actions.changeQuoteCurrency(currency));
     }
     this.props.navigation.goBack(null);
   };
@@ -52,7 +53,7 @@ class CurrencyList extends React.Component<CurrencyListProps> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State) => ({
   baseCurrency: state.currencies.baseCurrency,
   quoteCurrency: state.currencies.quoteCurrency,
   primaryColor: state.theme.primaryColor,

@@ -7,7 +7,7 @@ export interface AlertContext {
 }
 const defaultAlertContext: AlertContext = {
   alertWithType: () => {},
-}
+};
 export const Alert = React.createContext<AlertContext>(defaultAlertContext);
 
 export class AlertProvider extends React.Component {
@@ -16,9 +16,15 @@ export class AlertProvider extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Alert.Provider value={ {
-          alertWithType: (type: string, title: string,...messages: string[]) => this.dropdown.alertWithType(type, title, ...messages)
-        } }>
+        <Alert.Provider
+          value={{
+            alertWithType: (
+              type: string,
+              title: string,
+              ...messages: string[]
+            ) => this.dropdown.alertWithType(type, title, ...messages),
+          }}
+        >
           {React.Children.only(this.props.children)}
         </Alert.Provider>
 

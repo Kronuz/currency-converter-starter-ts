@@ -1,30 +1,24 @@
-export const SWAP_CURRENCY = 'SWAP_CURRENCY';
-export const CHANGE_CURRENCY_AMOUNT = 'CHANGE_CURRENCY_AMOUNT';
-export const CHANGE_BASE_CURRENCY = 'CHANGE_BASE_CURRENCY';
-export const CHANGE_QUOTE_CURRENCY = 'CHANGE_QUOTE_CURRENCY';
-export const GET_INITIAL_CONVERSION = 'GET_INITIAL_CONVERSION';
-export const CONVERSION_RESULT = 'CONVERSION_RESULT';
-export const CONVERSION_ERROR = 'CONVERSION_ERROR';
+import { createAction, ActionsUnion } from '.';
+import { create } from 'react-test-renderer';
 
-export const swapCurrency = () => ({
-  type: SWAP_CURRENCY,
-});
+export enum ActionTypes {
+  SWAP_CURRENCY = 'SWAP_CURRENCY',
+  CHANGE_CURRENCY_AMOUNT = 'CHANGE_CURRENCY_AMOUNT',
+  CHANGE_BASE_CURRENCY = 'CHANGE_BASE_CURRENCY',
+  CHANGE_QUOTE_CURRENCY = 'CHANGE_QUOTE_CURRENCY',
+  GET_INITIAL_CONVERSION = 'GET_INITIAL_CONVERSION',
+  CONVERSION_RESULT = 'CONVERSION_RESULT',
+  CONVERSION_ERROR = 'CONVERSION_ERROR',
+};
 
-export const changeCurrencyAmount = amount => ({
-  type: CHANGE_CURRENCY_AMOUNT,
-  amount: parseFloat(amount),
-});
+export const Actions = {
+  swapCurrency: () => createAction(ActionTypes.SWAP_CURRENCY),
+  changeCurrencyAmount: (amount: number) => createAction(ActionTypes.CHANGE_CURRENCY_AMOUNT, amount),
+  changeBaseCurrency: (currency: string) => createAction(ActionTypes.CHANGE_BASE_CURRENCY, currency),
+  changeQuoteCurrency: (currency: string) => createAction(ActionTypes.CHANGE_QUOTE_CURRENCY, currency),
+  getInitialConversion: () => createAction(ActionTypes.GET_INITIAL_CONVERSION),
+  conversionResult: (result) => createAction(ActionTypes.CONVERSION_RESULT, result),
+  conversionError: (error: string) => createAction(ActionTypes.CONVERSION_ERROR, error),
+};
 
-export const changeBaseCurrency = currency => ({
-  type: CHANGE_BASE_CURRENCY,
-  currency,
-});
-
-export const changeQuoteCurrency = currency => ({
-  type: CHANGE_QUOTE_CURRENCY,
-  currency,
-});
-
-export const getInitialConversion = () => ({
-  type: GET_INITIAL_CONVERSION,
-});
+export type Actions = ActionsUnion<typeof Actions>;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image, View } from 'react-native';
 
-import imageCheck from './images/check.png';
+import checkPng from './images/check.png';
 import styles from './styles';
 
 interface IconProps {
@@ -24,7 +24,7 @@ const Icon = ({ checkMark, visible, iconBackground }: IconProps) => {
         <Image
           resizeMode="contain"
           style={styles.checkIcon}
-          source={imageCheck}
+          source={checkPng}
         />
       ) : null}
     </View>

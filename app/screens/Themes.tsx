@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ScrollView, StatusBar } from 'react-native';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import reactNativeExtendedStylesheet from 'react-native-extended-stylesheet';
 import { connect, Dispatch } from 'react-redux';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { changePrimaryColor } from '../actions/theme';
+import { Actions } from '../actions/theme';
 import { ListItem, Separator } from '../components/List';
 
-const styles = EStyleSheet.create({
+const styles = reactNativeExtendedStylesheet.create({
   $blue: '$primaryBlue',
   $green: '$primaryGreen',
   $orange: '$primaryOrange',
@@ -21,7 +21,7 @@ interface ThemesProps {
 
 class Themes extends React.Component<ThemesProps> {
   private handlePressTheme = (color: string) => {
-    this.props.dispatch(changePrimaryColor(color));
+    this.props.dispatch(Actions.changePrimaryColor(color));
     this.props.navigation.goBack(null);
   };
 

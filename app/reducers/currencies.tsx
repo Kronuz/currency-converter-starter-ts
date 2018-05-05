@@ -1,23 +1,22 @@
-import {
-  CHANGE_BASE_CURRENCY,
-  CHANGE_CURRENCY_AMOUNT,
-  CHANGE_QUOTE_CURRENCY,
-  CONVERSION_ERROR,
-  CONVERSION_RESULT,
-  GET_INITIAL_CONVERSION,
-  SWAP_CURRENCY,
-} from '../actions/currencies';
+import { Actions, ActionTypes } from '../actions/currencies';
 
-const initialState = {
+export interface State {
+  baseCurrency: string;
+  quoteCurrency: string;
+  amount: number;
+  conversions: any;
+  error?: string;
+}
+
+export const initialState: State = {
   baseCurrency: 'USD',
   quoteCurrency: 'GBP',
   amount: 100,
   conversions: {},
-  error: null,
 };
 
-const setConversions = (state, action) => {
-  let conversion = state.conversions[action.currency];
+const setConversions = (state: State, currency: string) => {
+  let conversion = state.conversions[currency];
   if (!conversion) {
     conversion = {
       isFetching: true,
@@ -27,60 +26,71 @@ const setConversions = (state, action) => {
   }
   return {
     ...state.conversions,
-    [action.currency]: conversion,
+    [currency]: conversion,
   };
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case CHANGE_CURRENCY_AMOUNT:
+    case ActionTypes.CHANGE_CURRENCY_AMOUNT: {
+      const {payload: amount} = action;
       return {
         ...state,
-        amount: action.amount || 0,
+        amount: amount || 0,
       };
-    case SWAP_CURRENCY:
+    }
+    case ActionTypes.SWAP_CURRENCY: {
       return {
         ...state,
         baseCurrency: state.quoteCurrency,
         quoteCurrency: state.baseCurrency,
       };
-    case CHANGE_BASE_CURRENCY:
+    }
+    case ActionTypes.CHANGE_BASE_CURRENCY: {
+      const {payload: currency} = action;
       return {
         ...state,
-        baseCurrency: action.currency,
-        conversions: setConversions(state, action),
+        baseCurrency: currency,
+        conversions: setConversions(state, currency),
       };
-    case CHANGE_QUOTE_CURRENCY:
+    }
+    case ActionTypes.CHANGE_QUOTE_CURRENCY: {
+      const {payload: currency} = action;
       return {
         ...state,
-        quoteCurrency: action.currency,
-        conversions: setConversions(state, action),
+        quoteCurrency: currency,
+        conversions: setConversions(state, currency),
       };
-    case GET_INITIAL_CONVERSION:
+    }
+    case ActionTypes.GET_INITIAL_CONVERSION: {
       return {
         ...state,
-        conversions: setConversions(state, { currency: state.baseCurrency }),
+        conversions: setConversions(state, state.baseCurrency),
       };
-    case CONVERSION_RESULT:
+    }
+    case ActionTypes.CONVERSION_RESULT: {
+      const {payload: result} = action;
       return {
         ...state,
-        baseCurrency: action.result.base,
+        baseCurrency: result.base,
         conversions: {
           ...state.conversions,
-          [action.result.base]: {
-            ...action.result,
+          [result.base]: {
+            ...result,
             isFetching: false,
           },
         },
       };
-    case CONVERSION_ERROR:
+    }
+    case ActionTypes.CONVERSION_ERROR: {
+      const {payload: error} = action;
       return {
         ...state,
-        error: action.error,
+        error,
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };
-
-export default reducer;

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import reactNativeExtendedStylesheet from 'react-native-extended-stylesheet';
 import { Provider } from 'react-redux';
 
 import { AlertProvider } from './components/Alert';
 import Navigator from './config/routes';
 import store from './config/store';
 
-EStyleSheet.build({
+reactNativeExtendedStylesheet.build({
   $primaryBlue: '#4f6d7a',
   $primaryOrange: '#d57855',
   $primaryGreen: '#00bd9d',

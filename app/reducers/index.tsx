@@ -1,9 +1,15 @@
 import { combineReducers } from 'redux';
+import * as currencies from './currencies';
+import * as theme from './theme';
 
-import currencies from './currencies';
-import theme from './theme';
+export interface State {
+  currencies: currencies.State;
+  theme: theme.State;
+}
 
-export default combineReducers({
-  currencies,
-  theme,
+const reducers = combineReducers({
+  currencies: currencies.reducer,
+  theme: theme.reducer,
 });
+
+export default reducers;
