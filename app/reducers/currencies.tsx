@@ -1,11 +1,11 @@
 import { Actions, ActionTypes } from '../actions/currencies';
 
 export interface State {
-  baseCurrency: string;
-  quoteCurrency: string;
-  amount: number;
-  conversions: any;
-  error?: string;
+  readonly baseCurrency: string;
+  readonly quoteCurrency: string;
+  readonly amount: number;
+  readonly conversions: any;
+  readonly error?: string;
 }
 
 export const initialState: State = {

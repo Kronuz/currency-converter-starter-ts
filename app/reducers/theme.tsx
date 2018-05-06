@@ -1,7 +1,7 @@
 import { Actions, ActionTypes } from '../actions/theme';
 
 export interface State {
-  primaryColor: string;
+  readonly primaryColor: string;
 }
 
 export const initialState: State = {
