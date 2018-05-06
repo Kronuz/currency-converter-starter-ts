@@ -13,8 +13,7 @@ interface LastConvertedProps {
 
 const LastConverted = ({ base, quote, conversionRate, date }: LastConvertedProps) => (
   <Text style={styles.smallText}>
-    1 {base} = {conversionRate} {quote} as of
-    {moment(date).format('MMM D, YYYY')}
+    1 {base} = {conversionRate.toFixed(2)} {quote} as of {moment(date).format('MMM D, YYYY')}
   </Text>
 );
 
