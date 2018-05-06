@@ -1,21 +1,35 @@
 import { Actions, ActionTypes } from '../actions/currencies';
 
-export interface State {
+export interface Rates {
+  readonly [currency: string]: number,
+}
+
+export interface Conversion {
+  readonly isFetching: boolean,
+  readonly date: string,
+  readonly rates: Rates,
+}
+
+export interface Conversions {
+  readonly [currency: string]: Conversion,
+}
+
+export interface Currencies {
   readonly baseCurrency: string;
   readonly quoteCurrency: string;
   readonly amount: number;
-  readonly conversions: any;
+  readonly conversions: Conversions;
   readonly error?: string;
 }
 
-export const initialState: State = {
+export const initialState: Currencies = {
   baseCurrency: 'USD',
   quoteCurrency: 'GBP',
   amount: 100,
   conversions: {},
 };
 
-const setConversions = (state: State, currency: string) => {
+const setConversions = (state: Currencies, currency: string) => {
   let conversion = state.conversions[currency];
   if (!conversion) {
     conversion = {

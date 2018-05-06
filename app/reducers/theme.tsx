@@ -1,10 +1,10 @@
 import { Actions, ActionTypes } from '../actions/theme';
 
-export interface State {
+export interface Theme {
   readonly primaryColor: string;
 }
 
-export const initialState: State = {
+export const initialState: Theme = {
   primaryColor: '#4f6d7a',
 };
 

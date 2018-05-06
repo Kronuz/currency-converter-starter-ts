@@ -3,8 +3,8 @@ import * as currencies from './currencies';
 import * as theme from './theme';
 
 export interface State {
-  currencies: currencies.State;
-  theme: theme.State;
+  currencies: currencies.Currencies;
+  theme: theme.Theme;
 }
 
 const reducers = combineReducers({
