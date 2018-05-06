@@ -21,8 +21,8 @@ class Options extends React.Component<OptionsProps> {
   };
 
   private handleSitePress = () => {
-    Linking.openURL('http://fixer.io').catch(() =>
-      this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened"),
+    Linking.openURL('https://exchangeratesapi.io').catch(() =>
+      this.props.alertWithType('error', 'Sorry!', "ExchangeRatesAPI.io can't be opened"),
     );
   };
 
@@ -43,7 +43,7 @@ class Options extends React.Component<OptionsProps> {
         />
         <Separator />
         <ListItem
-          text="Fixer.io"
+          text="ExchangeRatesAPI.io"
           onPress={this.handleSitePress}
           customIcon={
             <Ionicons
