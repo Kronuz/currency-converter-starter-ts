@@ -25,13 +25,29 @@ class Themes extends React.Component<ThemesProps> {
     this.props.navigation.goBack(null);
   };
 
+  private handlePressBlueTheme = () => {
+    this.handlePressTheme(styles.$blue);
+  }
+
+  private handlePressOrangeTheme = () => {
+    this.handlePressTheme(styles.$orange);
+  }
+
+  private handlePressGreenTheme = () => {
+    this.handlePressTheme(styles.$green);
+  }
+
+  private handlePressPurpleTheme = () => {
+    this.handlePressTheme(styles.$purple);
+  }
+
   public render() {
     return (
       <ScrollView>
         <StatusBar translucent={false} barStyle="default" />
         <ListItem
           text="Blue"
-          onPress={() => this.handlePressTheme(styles.$blue)}
+          onPress={this.handlePressBlueTheme}
           selected
           checkMark={false}
           iconBackground={styles.$blue}
@@ -39,7 +55,7 @@ class Themes extends React.Component<ThemesProps> {
         <Separator />
         <ListItem
           text="Orange"
-          onPress={() => this.handlePressTheme(styles.$orange)}
+          onPress={this.handlePressOrangeTheme}
           selected
           checkMark={false}
           iconBackground={styles.$orange}
@@ -47,7 +63,7 @@ class Themes extends React.Component<ThemesProps> {
         <Separator />
         <ListItem
           text="Green"
-          onPress={() => this.handlePressTheme(styles.$green)}
+          onPress={this.handlePressGreenTheme}
           selected
           checkMark={false}
           iconBackground={styles.$green}
@@ -55,7 +71,7 @@ class Themes extends React.Component<ThemesProps> {
         <Separator />
         <ListItem
           text="Purple"
-          onPress={() => this.handlePressTheme(styles.$purple)}
+          onPress={this.handlePressPurpleTheme}
           selected
           checkMark={false}
           iconBackground={styles.$purple}
