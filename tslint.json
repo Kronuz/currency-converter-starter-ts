@@ -1,23 +1,29 @@
 {
     "extends": [
-        "tslint-config-airbnb",
         "tslint-react",
-        "tslint-config-prettier",
+        "tslint-config-airbnb",
         "tslint-plugin-prettier"
     ],
     "rules": {
+        "class-name": true,
+        "forin": true,
+        "jsdoc-format": true,
+        "jsx-boolean-value": [
+            true,
+            "never"
+        ],
+        "max-line-length": [true, 105],
+        "jsx-no-multiline-js": false,
         "member-access": true,
         "member-ordering": [
             true,
             "variables-before-functions",
             "public-before-private"
         ],
-        "class-name": true,
-        "jsdoc-format": true,
-        "forin": true,
-        "jsx-boolean-value": [
+        "semicolon": [
             true,
-            "never"
+            "always",
+            "ignore-bound-class-methods"
         ],
         "typedef-whitespace": [
             true,
