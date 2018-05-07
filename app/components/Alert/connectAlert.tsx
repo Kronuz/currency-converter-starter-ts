@@ -7,7 +7,7 @@ const connectAlert = <P extends AlertContext>(
   UnwrappedComponent: React.ComponentType<P>
 ) => {
   class ConnectedAlert extends React.Component<P> {
-    render() {
+    public render() {
       return (
         <Alert.Consumer>
         {

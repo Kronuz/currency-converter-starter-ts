@@ -28,11 +28,11 @@ interface HomeProps extends AlertContext {
 }
 
 class Home extends React.Component<HomeProps> {
-  componentWillMount() {
+  public componentWillMount() {
     this.props.dispatch(Actions.getInitialConversion());
   }
 
-  componentWillReceiveProps(nextProps: HomeProps) {
+  public componentWillReceiveProps(nextProps: HomeProps) {
     if (
       nextProps.currencyError &&
       this.props.currencyError !== nextProps.currencyError
@@ -41,35 +41,35 @@ class Home extends React.Component<HomeProps> {
     }
   }
 
-  handlePressBaseCurrency = () => {
+  private handlePressBaseCurrency = () => {
     this.props.navigation.navigate('CurrencyList', {
       title: 'Base Currency',
       type: 'base',
     });
   };
 
-  handlePressQuoteCurrency = () => {
+  private handlePressQuoteCurrency = () => {
     this.props.navigation.navigate('CurrencyList', {
       title: 'Quote Currency',
       type: 'quote',
     });
   };
 
-  handleTextChange = (amount: string) => {
+  private handleTextChange = (amount: string) => {
     this.props.dispatch(
       Actions.changeCurrencyAmount(parseFloat(amount)),
     );
   };
 
-  handleSwapCurrency = () => {
+  private handleSwapCurrency = () => {
     this.props.dispatch(Actions.swapCurrency());
   };
 
-  handleOptionPress = () => {
+  private handleOptionPress = () => {
     this.props.navigation.navigate('Options');
   };
 
-  render() {
+  public render() {
     let quotePrice = (this.props.amount * this.props.conversionRate).toFixed(2);
     if (this.props.isFetching) {
       quotePrice = '...';

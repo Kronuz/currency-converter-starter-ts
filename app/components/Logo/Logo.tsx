@@ -6,9 +6,9 @@ import styles from './styles';
 const ANIMATION_DURATION = 250;
 
 class Logo extends React.Component {
-  imageWidth: Animated.Value;
-  keyboardShowListener: EmitterSubscription;
-  keyboardHideListener: EmitterSubscription;
+  private imageWidth: Animated.Value;
+  private keyboardShowListener: EmitterSubscription;
+  private keyboardHideListener: EmitterSubscription;
 
   constructor(props: any) {
     super(props);
@@ -16,7 +16,7 @@ class Logo extends React.Component {
     this.imageWidth = new Animated.Value(styles.$largeImageSize);
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const showListener =
       Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';
     const hideListener =
@@ -31,26 +31,26 @@ class Logo extends React.Component {
     );
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     this.keyboardShowListener.remove();
     this.keyboardHideListener.remove();
   }
 
-  keyboardShow = () => {
+  private keyboardShow = () => {
     Animated.timing(this.imageWidth, {
       toValue: styles.$smallImageSize,
       duration: ANIMATION_DURATION,
     }).start();
   };
 
-  keyboardHide = () => {
+  private keyboardHide = () => {
     Animated.timing(this.imageWidth, {
       toValue: styles.$largeImageSize,
       duration: ANIMATION_DURATION,
     }).start();
   };
 
-  render() {
+  public render() {
     const imageStyle = [
       styles.logo,
       { width: this.imageWidth, height: this.imageWidth },

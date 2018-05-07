@@ -11,9 +11,9 @@ const defaultAlertContext: AlertContext = {
 export const Alert = React.createContext<AlertContext>(defaultAlertContext);
 
 export class AlertProvider extends React.Component {
-  dropdown: AlertContext = defaultAlertContext;
+  private dropdown: AlertContext = defaultAlertContext;
 
-  render() {
+  public render() {
     return (
       <View style={{ flex: 1 }}>
         <Alert.Provider
