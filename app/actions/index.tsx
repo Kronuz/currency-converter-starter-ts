@@ -16,4 +16,4 @@ export function createAction<T extends string, P>(type: T, payload?: P) {
   return payload === undefined ? { type } : { type, payload };
 }
 
-export type ActionsUnion<A extends ReducersMapObject> = ReturnType<A[keyof A]> | TypedAction<"">;
+export type ActionsUnion<A extends ReducersMapObject> = ReturnType<A[keyof A]>;
