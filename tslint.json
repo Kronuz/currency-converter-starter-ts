@@ -7,7 +7,33 @@
     ],
     "rules": {
         "member-access": true,
-        "jsx-boolean-value": [true, "never"],
-        "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+        "member-ordering": [
+            true,
+            "variables-before-functions",
+            "public-before-private"
+        ],
+        "class-name": true,
+        "jsdoc-format": true,
+        "forin": true,
+        "jsx-boolean-value": [
+            true,
+            "never"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            }
+        ],
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-pascal-case"
+        ]
     }
 }
