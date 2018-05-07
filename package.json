@@ -13,7 +13,7 @@
     "@types/react-redux": "^5.0.19",
     "@types/react-test-renderer": "^16.0.1",
     "@types/redux-logger": "^3.0.6",
-    "jest-expo": "26.0.0",
+    "jest-expo-ts": "^22.0.1",
     "prettier": "^1.12.1",
     "react-native-scripts": "1.13.2",
     "react-native-typescript-transformer": "^1.2.5",
@@ -34,7 +34,7 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo-ts"
   },
   "dependencies": {
     "@expo/vector-icons": "6.3.1",
