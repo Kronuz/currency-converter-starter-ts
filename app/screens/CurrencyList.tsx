@@ -18,39 +18,50 @@ interface CurrencyListProps {
 
 class CurrencyList extends React.Component<CurrencyListProps> {
   public render() {
-    let comparisonCurrency = this.props.baseCurrency;
-    if (this.props.navigation.state.params.type === 'quote') {
-      comparisonCurrency = this.props.quoteCurrency;
-    }
     return (
       <View style={{ flex: 1 }}>
         <StatusBar translucent={false} barStyle="default" />
         <FlatList
           data={currencies}
-          renderItem={({ item }) => (
-            <ListItem
-              text={item}
-              selected={item === comparisonCurrency}
-              onPress={() => this.handlePress(item)}
-              iconBackground={this.props.primaryColor}
-            />
-          )}
-          keyExtractor={item => item}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
           ItemSeparatorComponent={Separator}
         />
       </View>
     );
   }
 
-  private handlePress = (currency: string) => {
+  private keyExtractor = (item: string) => item;
+
+  private renderItem = ({ item }: { item: string }) => {
     const { type } = this.props.navigation.state.params;
-    if (type === 'base') {
-      this.props.dispatch(Actions.changeBaseCurrency(currency));
-    } else if (type === 'quote') {
-      this.props.dispatch(Actions.changeQuoteCurrency(currency));
-    }
+    const comparisonCurrency =
+      type === 'quote'
+        ? this.props.quoteCurrency
+        : this.props.baseCurrency;
+    const handlePress =
+      type === 'quote'
+        ? this.handlePressQuoteCurrency
+        : this.handlePressBaseCurrency;
+    return (
+      <ListItem
+        text={item}
+        selected={item === comparisonCurrency}
+        onPress={handlePress}
+        iconBackground={this.props.primaryColor}
+      />
+    );
+  }
+
+  private handlePressBaseCurrency = (currency: string) => {
+    this.props.dispatch(Actions.changeBaseCurrency(currency));
     this.props.navigation.goBack(null);
-  };
+  }
+
+  private handlePressQuoteCurrency = (currency: string) => {
+    this.props.dispatch(Actions.changeQuoteCurrency(currency));
+    this.props.navigation.goBack(null);
+  }
 }
 
 const mapStateToProps = (state: State) => ({
