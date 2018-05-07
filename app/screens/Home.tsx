@@ -41,34 +41,6 @@ class Home extends React.Component<HomeProps> {
     }
   }
 
-  private handlePressBaseCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', {
-      title: 'Base Currency',
-      type: 'base',
-    });
-  };
-
-  private handlePressQuoteCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', {
-      title: 'Quote Currency',
-      type: 'quote',
-    });
-  };
-
-  private handleTextChange = (amount: string) => {
-    this.props.dispatch(
-      Actions.changeCurrencyAmount(parseFloat(amount)),
-    );
-  };
-
-  private handleSwapCurrency = () => {
-    this.props.dispatch(Actions.swapCurrency());
-  };
-
-  private handleOptionPress = () => {
-    this.props.navigation.navigate('Options');
-  };
-
   public render() {
     let quotePrice = (this.props.amount * this.props.conversionRate).toFixed(2);
     if (this.props.isFetching) {
@@ -109,6 +81,34 @@ class Home extends React.Component<HomeProps> {
       </Container>
     );
   }
+
+  private handlePressBaseCurrency = () => {
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Base Currency',
+      type: 'base',
+    });
+  };
+
+  private handlePressQuoteCurrency = () => {
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Quote Currency',
+      type: 'quote',
+    });
+  };
+
+  private handleTextChange = (amount: string) => {
+    this.props.dispatch(
+      Actions.changeCurrencyAmount(parseFloat(amount)),
+    );
+  };
+
+  private handleSwapCurrency = () => {
+    this.props.dispatch(Actions.swapCurrency());
+  };
+
+  private handleOptionPress = () => {
+    this.props.navigation.navigate('Options');
+  };
 }
 
 const mapStateToProps = (state: State) => {

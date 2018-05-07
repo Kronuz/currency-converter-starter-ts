@@ -20,27 +20,6 @@ interface ThemesProps {
 }
 
 class Themes extends React.Component<ThemesProps> {
-  private handlePressTheme = (color: string) => {
-    this.props.dispatch(Actions.changePrimaryColor(color));
-    this.props.navigation.goBack(null);
-  };
-
-  private handlePressBlueTheme = () => {
-    this.handlePressTheme(styles.$blue);
-  }
-
-  private handlePressOrangeTheme = () => {
-    this.handlePressTheme(styles.$orange);
-  }
-
-  private handlePressGreenTheme = () => {
-    this.handlePressTheme(styles.$green);
-  }
-
-  private handlePressPurpleTheme = () => {
-    this.handlePressTheme(styles.$purple);
-  }
-
   public render() {
     return (
       <ScrollView>
@@ -79,6 +58,27 @@ class Themes extends React.Component<ThemesProps> {
         <Separator />
       </ScrollView>
     );
+  }
+
+  private handlePressTheme = (color: string) => {
+    this.props.dispatch(Actions.changePrimaryColor(color));
+    this.props.navigation.goBack(null);
+  };
+
+  private handlePressBlueTheme = () => {
+    this.handlePressTheme(styles.$blue);
+  }
+
+  private handlePressOrangeTheme = () => {
+    this.handlePressTheme(styles.$orange);
+  }
+
+  private handlePressGreenTheme = () => {
+    this.handlePressTheme(styles.$green);
+  }
+
+  private handlePressPurpleTheme = () => {
+    this.handlePressTheme(styles.$purple);
   }
 }
 

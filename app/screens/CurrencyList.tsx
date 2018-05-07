@@ -17,16 +17,6 @@ interface CurrencyListProps {
 }
 
 class CurrencyList extends React.Component<CurrencyListProps> {
-  private handlePress = (currency: string) => {
-    const { type } = this.props.navigation.state.params;
-    if (type === 'base') {
-      this.props.dispatch(Actions.changeBaseCurrency(currency));
-    } else if (type === 'quote') {
-      this.props.dispatch(Actions.changeQuoteCurrency(currency));
-    }
-    this.props.navigation.goBack(null);
-  };
-
   public render() {
     let comparisonCurrency = this.props.baseCurrency;
     if (this.props.navigation.state.params.type === 'quote') {
@@ -51,6 +41,16 @@ class CurrencyList extends React.Component<CurrencyListProps> {
       </View>
     );
   }
+
+  private handlePress = (currency: string) => {
+    const { type } = this.props.navigation.state.params;
+    if (type === 'base') {
+      this.props.dispatch(Actions.changeBaseCurrency(currency));
+    } else if (type === 'quote') {
+      this.props.dispatch(Actions.changeQuoteCurrency(currency));
+    }
+    this.props.navigation.goBack(null);
+  };
 }
 
 const mapStateToProps = (state: State) => ({

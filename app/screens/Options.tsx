@@ -16,16 +16,6 @@ interface OptionsProps extends AlertContext {
 }
 
 class Options extends React.Component<OptionsProps> {
-  private handleThemesPress = () => {
-    this.props.navigation.navigate('Themes');
-  };
-
-  private handleSitePress = () => {
-    Linking.openURL('https://exchangeratesapi.io').catch(() =>
-      this.props.alertWithType('error', 'Sorry!', "ExchangeRatesAPI.io can't be opened"),
-    );
-  };
-
   public render() {
     return (
       <ScrollView>
@@ -57,6 +47,16 @@ class Options extends React.Component<OptionsProps> {
       </ScrollView>
     );
   }
+
+  private handleThemesPress = () => {
+    this.props.navigation.navigate('Themes');
+  };
+
+  private handleSitePress = () => {
+    Linking.openURL('https://exchangeratesapi.io').catch(() =>
+      this.props.alertWithType('error', 'Sorry!', "ExchangeRatesAPI.io can't be opened"),
+    );
+  };
 }
 
 export default connectAlert(Options);

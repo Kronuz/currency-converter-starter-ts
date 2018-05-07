@@ -36,20 +36,6 @@ class Logo extends React.Component {
     this.keyboardHideListener.remove();
   }
 
-  private keyboardShow = () => {
-    Animated.timing(this.imageWidth, {
-      toValue: styles.$smallImageSize,
-      duration: ANIMATION_DURATION,
-    }).start();
-  };
-
-  private keyboardHide = () => {
-    Animated.timing(this.imageWidth, {
-      toValue: styles.$largeImageSize,
-      duration: ANIMATION_DURATION,
-    }).start();
-  };
-
   public render() {
     const imageStyle = [
       styles.logo,
@@ -68,6 +54,20 @@ class Logo extends React.Component {
       </View>
     );
   }
+
+  private keyboardShow = () => {
+    Animated.timing(this.imageWidth, {
+      toValue: styles.$smallImageSize,
+      duration: ANIMATION_DURATION,
+    }).start();
+  };
+
+  private keyboardHide = () => {
+    Animated.timing(this.imageWidth, {
+      toValue: styles.$largeImageSize,
+      duration: ANIMATION_DURATION,
+    }).start();
+  };
 }
 
 export default Logo;
