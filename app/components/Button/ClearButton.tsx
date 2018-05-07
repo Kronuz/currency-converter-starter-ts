@@ -4,7 +4,7 @@ import { Image, Text, TouchableOpacity, View, ButtonProps } from 'react-native';
 import iconPng from './images/icon.png';
 import styles from './styles';
 
-const ClearButton = ({title, onPress}: ButtonProps) => (
+const ClearButton = ({ title, onPress }: ButtonProps) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.wrapper}>
       <Image resizeMode="contain" style={styles.icon} source={iconPng} />

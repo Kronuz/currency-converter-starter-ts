@@ -7,7 +7,7 @@ export interface TypedAction<T extends string> {
 }
 
 export interface AnyTypedAction<T extends string, P> extends TypedAction<T> {
-  payload: P,
+  payload: P;
 }
 
 export function createAction<T extends string>(type: T): TypedAction<T>;

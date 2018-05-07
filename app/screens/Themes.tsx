@@ -67,19 +67,19 @@ class Themes extends React.Component<ThemesProps> {
 
   private handlePressBlueTheme = () => {
     this.handlePressTheme(styles.$blue);
-  }
+  };
 
   private handlePressOrangeTheme = () => {
     this.handlePressTheme(styles.$orange);
-  }
+  };
 
   private handlePressGreenTheme = () => {
     this.handlePressTheme(styles.$green);
-  }
+  };
 
   private handlePressPurpleTheme = () => {
     this.handlePressTheme(styles.$purple);
-  }
+  };
 }
 
 export default connect()(Themes);

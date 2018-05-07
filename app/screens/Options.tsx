@@ -24,24 +24,14 @@ class Options extends React.Component<OptionsProps> {
           text="Themes"
           onPress={this.handleThemesPress}
           customIcon={
-            <Ionicons
-              name={`${ICON_PREFIX}-arrow-forward`}
-              color={ICON_COLOR}
-              size={ICON_SIZE}
-            />
+            <Ionicons name={`${ICON_PREFIX}-arrow-forward`} color={ICON_COLOR} size={ICON_SIZE} />
           }
         />
         <Separator />
         <ListItem
           text="ExchangeRatesAPI.io"
           onPress={this.handleSitePress}
-          customIcon={
-            <Ionicons
-              name={`${ICON_PREFIX}-link`}
-              color={ICON_COLOR}
-              size={ICON_SIZE}
-            />
-          }
+          customIcon={<Ionicons name={`${ICON_PREFIX}-link`} color={ICON_COLOR} size={ICON_SIZE} />}
         />
         <Separator />
       </ScrollView>

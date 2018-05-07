@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 import styles from './styles';
 
 interface LastConvertedProps {
-  date: Date,
+  date: Date;
   base: string;
   quote: string;
   conversionRate: number;

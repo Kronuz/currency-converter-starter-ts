@@ -18,11 +18,8 @@ export class AlertProvider extends React.Component {
       <View style={{ flex: 1 }}>
         <Alert.Provider
           value={{
-            alertWithType: (
-              type: string,
-              title: string,
-              ...messages: string[]
-            ) => this.dropdown.alertWithType(type, title, ...messages),
+            alertWithType: (type: string, title: string, ...messages: string[]) =>
+              this.dropdown.alertWithType(type, title, ...messages),
           }}
         >
           {React.Children.only(this.props.children)}

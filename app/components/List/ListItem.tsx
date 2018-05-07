@@ -30,11 +30,7 @@ class ListItem extends React.Component<ListItemProps> {
         <View style={styles.row}>
           <Text style={styles.text}>{text}</Text>
           {selected ? (
-            <Icon
-              checkMark={checkMark}
-              visible={visible}
-              iconBackground={iconBackground}
-            />
+            <Icon checkMark={checkMark} visible={visible} iconBackground={iconBackground} />
           ) : (
             <Icon />
           )}
@@ -47,7 +43,7 @@ class ListItem extends React.Component<ListItemProps> {
   private onPress = () => {
     const { onPress, text } = this.props;
     onPress(text);
-  }
+  };
 }
 
 export default ListItem;

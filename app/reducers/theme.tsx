@@ -11,7 +11,7 @@ export const initialState: Theme = {
 export const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionTypes.CHANGE_PRIMARY_COLOR: {
-      const {payload: color} = action;
+      const { payload: color } = action;
       return {
         ...state,
         primaryColor: color,

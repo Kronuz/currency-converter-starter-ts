@@ -7,7 +7,7 @@ import { State } from '../reducers';
 // 3. Upon initial app load
 
 const getLatestRate = (currency: string) =>
-fetch(`https://exchangeratesapi.io/api/latest?base=${currency}`);
+  fetch(`https://exchangeratesapi.io/api/latest?base=${currency}`);
 
 function* fetchLatestConversionRates(action: Actions) {
   try {

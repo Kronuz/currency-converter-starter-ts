@@ -35,14 +35,8 @@ class CurrencyList extends React.Component<CurrencyListProps> {
 
   private renderItem = ({ item }: { item: string }) => {
     const { type } = this.props.navigation.state.params;
-    const comparisonCurrency =
-      type === 'quote'
-        ? this.props.quoteCurrency
-        : this.props.baseCurrency;
-    const handlePress =
-      type === 'quote'
-        ? this.handlePressQuoteCurrency
-        : this.handlePressBaseCurrency;
+    const comparisonCurrency = type === 'quote' ? this.props.quoteCurrency : this.props.baseCurrency;
+    const handlePress = type === 'quote' ? this.handlePressQuoteCurrency : this.handlePressBaseCurrency;
     return (
       <ListItem
         text={item}
@@ -51,17 +45,17 @@ class CurrencyList extends React.Component<CurrencyListProps> {
         iconBackground={this.props.primaryColor}
       />
     );
-  }
+  };
 
   private handlePressBaseCurrency = (currency: string) => {
     this.props.dispatch(Actions.changeBaseCurrency(currency));
     this.props.navigation.goBack(null);
-  }
+  };
 
   private handlePressQuoteCurrency = (currency: string) => {
     this.props.dispatch(Actions.changeQuoteCurrency(currency));
     this.props.navigation.goBack(null);
-  }
+  };
 }
 
 const mapStateToProps = (state: State) => ({

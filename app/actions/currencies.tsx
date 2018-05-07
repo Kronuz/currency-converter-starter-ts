@@ -8,7 +8,7 @@ export enum ActionTypes {
   GET_INITIAL_CONVERSION = 'GET_INITIAL_CONVERSION',
   CONVERSION_RESULT = 'CONVERSION_RESULT',
   CONVERSION_ERROR = 'CONVERSION_ERROR',
-};
+}
 
 export interface Result {
   base: string;

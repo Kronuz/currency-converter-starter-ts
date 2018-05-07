@@ -17,18 +17,10 @@ class Logo extends React.Component {
   }
 
   public componentDidMount() {
-    const showListener =
-      Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';
-    const hideListener =
-      Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide';
-    this.keyboardShowListener = Keyboard.addListener(
-      showListener,
-      this.keyboardShow,
-    );
-    this.keyboardHideListener = Keyboard.addListener(
-      hideListener,
-      this.keyboardHide,
-    );
+    const showListener = Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';
+    const hideListener = Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide';
+    this.keyboardShowListener = Keyboard.addListener(showListener, this.keyboardShow);
+    this.keyboardHideListener = Keyboard.addListener(hideListener, this.keyboardHide);
   }
 
   public componentWillUnmount() {
@@ -37,18 +29,11 @@ class Logo extends React.Component {
   }
 
   public render() {
-    const imageStyle = [
-      styles.logo,
-      { width: this.imageWidth, height: this.imageWidth },
-    ];
+    const imageStyle = [styles.logo, { width: this.imageWidth, height: this.imageWidth }];
     return (
       <View style={styles.container}>
         <View style={styles.wrapper}>
-          <Animated.Image
-            resizeMode="contain"
-            style={imageStyle}
-            source={logoPng}
-          />
+          <Animated.Image resizeMode="contain" style={imageStyle} source={logoPng} />
         </View>
         <Text style={styles.text}>Currency Converter</Text>
       </View>

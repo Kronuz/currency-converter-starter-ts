@@ -1,17 +1,17 @@
 import { Actions, ActionTypes } from '../actions/currencies';
 
 export interface Rates {
-  readonly [currency: string]: number,
+  readonly [currency: string]: number;
 }
 
 export interface Conversion {
-  readonly isFetching: boolean,
-  readonly date: string,
-  readonly rates: Rates,
+  readonly isFetching: boolean;
+  readonly date: string;
+  readonly rates: Rates;
 }
 
 export interface Conversions {
-  readonly [currency: string]: Conversion,
+  readonly [currency: string]: Conversion;
 }
 
 export interface Currencies {
@@ -47,7 +47,7 @@ const setConversions = (state: Currencies, currency: string) => {
 export const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionTypes.CHANGE_CURRENCY_AMOUNT: {
-      const {payload: amount} = action;
+      const { payload: amount } = action;
       return {
         ...state,
         amount: amount || 0,
@@ -61,7 +61,7 @@ export const reducer = (state = initialState, action: Actions) => {
       };
     }
     case ActionTypes.CHANGE_BASE_CURRENCY: {
-      const {payload: currency} = action;
+      const { payload: currency } = action;
       return {
         ...state,
         baseCurrency: currency,
@@ -69,7 +69,7 @@ export const reducer = (state = initialState, action: Actions) => {
       };
     }
     case ActionTypes.CHANGE_QUOTE_CURRENCY: {
-      const {payload: currency} = action;
+      const { payload: currency } = action;
       return {
         ...state,
         quoteCurrency: currency,
@@ -83,7 +83,7 @@ export const reducer = (state = initialState, action: Actions) => {
       };
     }
     case ActionTypes.CONVERSION_RESULT: {
-      const {payload: result} = action;
+      const { payload: result } = action;
       return {
         ...state,
         baseCurrency: result.base,
@@ -97,7 +97,7 @@ export const reducer = (state = initialState, action: Actions) => {
       };
     }
     case ActionTypes.CONVERSION_ERROR: {
-      const {payload: error} = action;
+      const { payload: error } = action;
       return {
         ...state,
         error,

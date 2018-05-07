@@ -33,10 +33,7 @@ class Home extends React.Component<HomeProps> {
   }
 
   public componentWillReceiveProps(nextProps: HomeProps) {
-    if (
-      nextProps.currencyError &&
-      this.props.currencyError !== nextProps.currencyError
-    ) {
+    if (nextProps.currencyError && this.props.currencyError !== nextProps.currencyError) {
       this.props.alertWithType('error', 'Error', nextProps.currencyError);
     }
   }
@@ -73,10 +70,7 @@ class Home extends React.Component<HomeProps> {
             date={this.props.lastConvertedDate}
             conversionRate={this.props.conversionRate}
           />
-          <ClearButton
-            title="Reverse Currencies"
-            onPress={this.handleSwapCurrency}
-          />
+          <ClearButton title="Reverse Currencies" onPress={this.handleSwapCurrency} />
         </KeyboardAvoidingView>
       </Container>
     );
@@ -97,9 +91,7 @@ class Home extends React.Component<HomeProps> {
   };
 
   private handleTextChange = (amount: string) => {
-    this.props.dispatch(
-      Actions.changeCurrencyAmount(parseFloat(amount)),
-    );
+    this.props.dispatch(Actions.changeCurrencyAmount(parseFloat(amount)));
   };
 
   private handleSwapCurrency = () => {
@@ -122,9 +114,7 @@ const mapStateToProps = (state: State) => {
     amount: state.currencies.amount,
     conversionRate: rates[quoteCurrency] || 0,
     isFetching: conversionSelector.isFetching,
-    lastConvertedDate: conversionSelector.date
-      ? new Date(conversionSelector.date)
-      : new Date(),
+    lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
     primaryColor: state.theme.primaryColor,
     currencyError: state.currencies.error,
   };
