@@ -20,6 +20,12 @@
             "variables-before-functions",
             "public-before-private"
         ],
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double",
+            "avoid-escape"
+        ],
         "semicolon": [
             true,
             "always",
