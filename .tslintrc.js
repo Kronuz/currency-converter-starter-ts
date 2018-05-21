@@ -1,4 +1,5 @@
-{
+module.exports = {
+    "defaultSeverity": "warning",
     "extends": [
         "tslint-react",
         "tslint-config-airbnb",
